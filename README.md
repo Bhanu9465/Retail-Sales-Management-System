@@ -73,12 +73,12 @@ A full-stack Retail Sales Management System for querying, filtering, sorting, an
 ### Prerequisites
 - Node.js 18+
 - MongoDB Atlas account (free tier)
-- Dataset CSV file
+- Dataset CSV file (not included due to size - obtain from assignment)
 
 ### 1. Clone Repository
 ```bash
-git clone <repo-url>
-cd SDE
+git clone https://github.com/Bhanu9465/Retail-Sales-Management-System.git
+cd Retail-Sales-Management-System
 ```
 
 ### 2. Backend Setup
@@ -91,7 +91,13 @@ cp .env.example .env
 # Edit .env and set your MONGO_URI
 ```
 
-### 3. Import Dataset to MongoDB
+### 3. Add Dataset
+```bash
+# Place the sales.csv file in:
+# backend/src/data/sales.csv
+```
+
+### 4. Import Dataset to MongoDB
 ```bash
 # Place sales.csv at backend/src/data/sales.csv
 npm run import
