@@ -41,21 +41,13 @@ process.on("unhandledRejection", (reason) => {
   console.error("Unhandled Rejection:", reason?.stack || reason);
 });
 
-// Start server with MongoDB connection
+// Start server (CSV-based - no MongoDB required)
 const start = async () => {
   try {
-    const mongoUri = process.env.MONGO_URI;
-    if (!mongoUri) {
-      console.error("❌ MONGO_URI not set in environment. Create .env file from .env.example");
-      process.exit(1);
-    }
-
-    await mongoose.connect(mongoUri, { dbName: process.env.DB_NAME || "truestate" });
-    console.log("✅ Connected to MongoDB");
-
     app.listen(PORT, () => {
       console.log(`🚀 Server running on http://localhost:${PORT}`);
       console.log(`📊 API endpoint: GET /api/sales`);
+      console.log(`📁 Using CSV data from src/data/sales.csv`);
     });
   } catch (err) {
     console.error("❌ Failed to start server:", err.message);

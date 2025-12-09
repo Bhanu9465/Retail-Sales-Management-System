@@ -1,8 +1,9 @@
-import { querySales } from "../services/salesService.js";
+import { querySalesFromCSV } from "../services/csvService.js";
 
 /**
  * GET /api/sales
  * Supports: search, filters (multi-select), sorting, pagination
+ * Uses CSV file directly (no MongoDB needed)
  */
 export const getSales = async (req, res) => {
   try {
@@ -55,7 +56,7 @@ export const getSales = async (req, res) => {
       limit: Math.min(parseInt(limit, 10) || 10, 100), // Cap at 100
     };
 
-    const { items, total } = await querySales(params);
+    const { items, total } = await querySalesFromCSV(params);
     const totalPages = Math.max(1, Math.ceil(total / params.limit));
 
     res.json({
